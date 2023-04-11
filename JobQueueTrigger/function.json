@@ -6,6 +6,14 @@
       "direction": "in",
       "queueName": "img2txtjobs",
       "connection": "MyStorageConnectionAppSetting"
+    },
+    {
+      "name": "outputDocument",
+      "direction": "out",
+      "type": "cosmosDB",
+      "connectionStringSetting": "AZURE_COSMOS_CONNECTIONSTRING",
+      "databaseName": "Shipping",
+      "collectionName": "Received"
     }
   ]
 }
