@@ -1,6 +1,10 @@
 const fetch = require('node-fetch')
 module.exports = async function (context, myQueueItem) {
     context.log('JavaScript queue trigger function processed work item', myQueueItem);
+    const pattern = /.+\/imgpdfs\/(.+)/;
+    const filename = myQueueItem.match(pattern)[1];
+    context.log('filename:', filename);
+    
     // Code that calls the image api and reads the response
     // computer vision resource
     const computer_vision = "https://infinitecats.cognitiveservices.azure.com/computervision/imageanalysis:analyze?features=caption,read&model-version=latest&language=en&api-version=2023-02-01-preview";
@@ -53,6 +57,7 @@ module.exports = async function (context, myQueueItem) {
             parsedContent[attr_to_combine_multiple_paragraph] = parsedContent[attr_to_combine_multiple_paragraph] + " " + parts[0]
         }
     });
+    parsedContent['ShipperID'] = filename;
     context.log('Document parsed: \n', parsedContent );
 
     // Code that inserts text into the database.
