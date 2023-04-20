@@ -1,0 +1,24 @@
+{
+  "bindings": [
+    {
+      "authLevel": "Anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "input"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "name": "fileResult",
+      "databaseName": "Shipping",
+      "collectionName": "Received",
+      "connectionStringSetting": "AZURE_COSMOS_CONNECTIONSTRING",
+      "sqlQuery": "SELECT * FROM table WHERE table.Filename = {filename}",
+      "direction": "in",
+      "type": "cosmosDB"
+    }
+  ]
+}
