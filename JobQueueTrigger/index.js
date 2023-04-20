@@ -57,7 +57,7 @@ module.exports = async function (context, myQueueItem) {
             parsedContent[attr_to_combine_multiple_paragraph] = parsedContent[attr_to_combine_multiple_paragraph] + " " + parts[0]
         }
     });
-    parsedContent['ShipperID'] = filename;
+    parsedContent['Filename'] = filename;
     context.log('Document parsed: \n', parsedContent );
 
     // Code that inserts text into the database.
